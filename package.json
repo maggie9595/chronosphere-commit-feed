@@ -11,6 +11,10 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "@types/node": "^17.0.23",
+    "@types/react": "^17.0.43",
+    "@types/react-dom": "^17.0.14",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
@@ -27,7 +31,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format": "prettier --write \"./projects/**/*.{j,t}s{x,}\" && prettier --write \"./projects/**/*.css\" --parser=css",
+    "format": "prettier --write \"./src/**/*.{j,t}s{x,}\" && prettier --write \"./src/**/*.css\" --parser=css",
     "lint": "eslint ."
   },
   "eslintConfig": {
