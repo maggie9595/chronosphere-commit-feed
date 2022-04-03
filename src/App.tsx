@@ -10,6 +10,7 @@ import "./App.css";
 function App() {
   const [user, setUser] = useState<string | undefined>(undefined);
   const [repo, setRepo] = useState<string | undefined>(undefined);
+  const [error, setError] = useState<string | undefined>(undefined);
 
   return (
     <Grid container spacing={2}>
@@ -62,15 +63,17 @@ function App() {
                   sx={{ mt: 2 }}
                   onClick={(e) => {
                     const headers = {
-                      Authorization:
-                        "token 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",
+                      Authorization: "token REPLACE_WITH_PERSONAL_ACCESS_TOKEN",
                     };
                     fetch("https://api.github.com/repos/m3db/m3/commits", {
                       headers,
                     })
-                      .then((response) => response.json())
-                      .then((data) => console.warn(data))
+                      .then(async (response) => {
+                        const data = await response.json();
+                        console.warn(data);
+                      })
                       .catch((error) => {
+                        setError(error.message);
                         console.error(
                           "Failed to fetch from GitHub API: ",
                           error
@@ -81,6 +84,18 @@ function App() {
                   Submit
                 </Button>
               </Grid>
+              {error && (
+                <Grid item xs={12}>
+                  <Typography
+                    variant="caption"
+                    component="div"
+                    className="error"
+                    gutterBottom
+                  >
+                    Failed to fetch from GitHub API: {error}
+                  </Typography>
+                </Grid>
+              )}
             </Grid>
           </Box>
         </Paper>
