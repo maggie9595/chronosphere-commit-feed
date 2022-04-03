@@ -1,107 +1,35 @@
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
-import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
-import React, { useState } from "react";
-import "./App.css";
+import {
+  Box,
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  Button,
+} from "@mui/material";
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  BrowserRouter,
+} from "react-router-dom";
+import Home from "./Home";
 
-function App() {
-  const [user, setUser] = useState<string | undefined>(undefined);
-  const [repo, setRepo] = useState<string | undefined>(undefined);
-  const [error, setError] = useState<string | undefined>(undefined);
-
+export default function App() {
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={12}>
-        <Typography variant="h4" component="div" gutterBottom>
-          GitHub Commit Feed
-        </Typography>
+    <BrowserRouter>
+      <AppBar>
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            GitHub Commit Feed
+          </Typography>
+        </Toolbar>
+      </AppBar>
 
-        <Paper elevation={3}>
-          <Box
-            sx={{
-              p: 3,
-              mt: 4,
-            }}
-          >
-            <Typography
-              variant="h6"
-              component="div"
-              gutterBottom
-              sx={{ mb: 3 }}
-            >
-              User Details
-            </Typography>
-
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  fullWidth
-                  label="GitHub Username/Org"
-                  id="user"
-                  onChange={(e) => {
-                    setUser(e.target.value);
-                  }}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  fullWidth
-                  label="Repo Name"
-                  id="repo"
-                  onChange={(e) => {
-                    setRepo(e.target.value);
-                  }}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <Button
-                  color="primary"
-                  variant="contained"
-                  sx={{ mt: 2 }}
-                  onClick={(e) => {
-                    const headers = {
-                      Authorization: "token REPLACE_WITH_PERSONAL_ACCESS_TOKEN",
-                    };
-                    fetch("https://api.github.com/repos/m3db/m3/commits", {
-                      headers,
-                    })
-                      .then(async (response) => {
-                        const data = await response.json();
-                        console.warn(data);
-                      })
-                      .catch((error) => {
-                        setError(error.message);
-                        console.error(
-                          "Failed to fetch from GitHub API: ",
-                          error
-                        );
-                      });
-                  }}
-                >
-                  Submit
-                </Button>
-              </Grid>
-              {error && (
-                <Grid item xs={12}>
-                  <Typography
-                    variant="caption"
-                    component="div"
-                    className="error"
-                    gutterBottom
-                  >
-                    Failed to fetch from GitHub API: {error}
-                  </Typography>
-                </Grid>
-              )}
-            </Grid>
-          </Box>
-        </Paper>
-      </Grid>
-    </Grid>
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;
