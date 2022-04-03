@@ -35,7 +35,7 @@ function App() {
             </Typography>
 
             <Grid container spacing={2}>
-              <Grid item xs={6}>
+              <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
                   label="GitHub Username/Org"
@@ -45,7 +45,7 @@ function App() {
                   }}
                 />
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
                   label="Repo Name"
@@ -61,22 +61,21 @@ function App() {
                   variant="contained"
                   sx={{ mt: 2 }}
                   onClick={(e) => {
-                    // client
-                    //   .PutUser({
-                    //     user_id: uuid,
-                    //     name: newName ? newName : name,
-                    //     primary_email: newEmail ? newEmail : email,
-                    //   })
-                    //   .then(
-                    //     (resp) => {
-                    //       // window.location.reload();
-                    //       console.warn(resp);
-                    //       setEditing(false);
-                    //     },
-                    //     (err) => {
-                    //       console.log("Failed to update user info: ", err);
-                    //     }
-                    //   );
+                    const headers = {
+                      Authorization:
+                        "token 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",
+                    };
+                    fetch("https://api.github.com/repos/m3db/m3/commits", {
+                      headers,
+                    })
+                      .then((response) => response.json())
+                      .then((data) => console.warn(data))
+                      .catch((error) => {
+                        console.error(
+                          "Failed to fetch from GitHub API: ",
+                          error
+                        );
+                      });
                   }}
                 >
                   Submit
