@@ -1,19 +1,7 @@
-import {
-  Box,
-  AppBar,
-  Toolbar,
-  IconButton,
-  Typography,
-  Button,
-} from "@mui/material";
+import { AppBar, Toolbar, Typography } from "@mui/material";
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link,
-  BrowserRouter,
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Feed from "./Feed";
 import Home from "./Home";
 
 export default function App() {
@@ -29,6 +17,15 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<Home />}></Route>
+        <Route path=":user/:repo" element={<Feed />}></Route>
+        <Route
+          path="*"
+          element={
+            <main style={{ padding: "1rem" }}>
+              <p>Theres nothing here!</p>
+            </main>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

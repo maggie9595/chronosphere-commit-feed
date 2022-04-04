@@ -57,24 +57,8 @@ function Home() {
                   color="primary"
                   variant="contained"
                   sx={{ mt: 2 }}
-                  onClick={(e) => {
-                    const headers = {
-                      Authorization: "token TOKEN",
-                    };
-                    fetch("https://api.github.com/repos/m3db/m3/commits", {
-                      headers,
-                    })
-                      .then(async (response) => {
-                        const data = await response.json();
-                        console.warn(data);
-                      })
-                      .catch((error) => {
-                        setError(error.message);
-                        console.error(
-                          "Failed to fetch from GitHub API: ",
-                          error
-                        );
-                      });
+                  onClick={() => {
+                    window.location.href = `/${user}/${repo}`;
                   }}
                 >
                   Submit
