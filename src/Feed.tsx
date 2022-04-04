@@ -38,7 +38,12 @@ function Feed() {
     })
       .then(async (response) => {
         const data = await response.json();
-        console.warn(data);
+
+        // Navigate to does not exist page when no commits can be found
+        if (data.message === "Not Found") {
+          window.location.href = "/does/not/exist";
+        }
+
         setCommits(data);
         setLoading(false);
       })
