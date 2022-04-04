@@ -10,7 +10,6 @@ import "./App.css";
 function Home() {
   const [user, setUser] = useState<string | undefined>(undefined);
   const [repo, setRepo] = useState<string | undefined>(undefined);
-  const [error, setError] = useState<string | undefined>(undefined);
 
   return (
     <Grid container spacing={2} sx={{ px: 5 }}>
@@ -64,18 +63,6 @@ function Home() {
                   Submit
                 </Button>
               </Grid>
-              {error && (
-                <Grid item xs={12}>
-                  <Typography
-                    variant="caption"
-                    component="div"
-                    className="error"
-                    gutterBottom
-                  >
-                    Failed to fetch from GitHub API: {error}
-                  </Typography>
-                </Grid>
-              )}
             </Grid>
           </Box>
         </Paper>

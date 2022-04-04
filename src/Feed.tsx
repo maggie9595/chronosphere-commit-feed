@@ -1,18 +1,17 @@
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
-import Typography from "@mui/material/Typography";
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import Typography from "@mui/material/Typography";
 import { format } from "date-fns";
-import Paper from "@mui/material/Paper";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import "./App.css";
 
 type Commit = {
@@ -115,6 +114,16 @@ function Feed() {
             )}
           </Box>
         </Paper>
+
+        <Link
+          color="inherit"
+          href="/"
+          sx={{
+            p: 1,
+          }}
+        >
+          <Typography variant="subtitle2">Return to homepage</Typography>
+        </Link>
       </Grid>
     </Grid>
   );
