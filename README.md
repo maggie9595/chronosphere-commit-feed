@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Commit Feed
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project uses the [GitHub API for listing commits](https://docs.github.com/en/rest/reference/repos#commits) and displays all commits for a repository given an username/organization name and repository name.
+Pagination is used to load more commits, and the application redirects to a `does not exist` page when the given repo does not exist or the user navigates to an invalid URL.
 
 ## Available Scripts
 
