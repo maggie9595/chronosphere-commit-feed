@@ -14,7 +14,7 @@ function DoesNotExist() {
         textAlign: "center",
       }}
     >
-      <img src="/404.jpg" width="500px" />
+      <img src="/404.jpg" width="500px" alt="404 not found cat" />
       <h3>
         Sorry, the page you requested could not be found or the repository you
         entered does not exist.

@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 
-test("renders learn react link", () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test("renders MUI toolbar", () => {
+  const { container } = render(<App />);
+  expect(screen.getByText("GitHub Commit Feed")).toBeInTheDocument();
+  expect(container.getElementsByClassName("MuiToolbar-root").length).toBe(1);
 });
