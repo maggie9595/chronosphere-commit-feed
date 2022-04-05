@@ -10,6 +10,10 @@ Pagination is used to load more commits, and the application redirects to a `doe
 
 In the project directory, you can run:
 
+### `npm install`
+
+Installs node modules, required before running the app and starting the server for the first time locally.
+
 ### `npm start`
 
 Runs the app in the development mode.\
